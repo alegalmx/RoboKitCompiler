@@ -1,0 +1,75 @@
+#Puertos
+
+port_A1 proximity promitySensor!
+port_A2 motor motor1!
+port_B6 button ButtonIN!
+port_B7 temperature temperatureSensor!
+port_B3 LCD starLCD!
+
+#Declaracion e iniacializacion de variables
+var int number1!
+var decimal number2!
+const string number3!
+var boolean bandera = false!
+bandera = true!
+var string cadena2!
+
+
+var string holaMundo = 'HolaMundo'!
+number1 = 3 !
+number2 = 3.3 !
+number3 = 'Hola'!
+# Todas las variables se deben declarar fuera de los bloques o funciones
+# y antes de uso 
+# Declaracion de funciones
+
+#funcion suma simple
+var int result!
+var int contador!
+var int aux = 0!
+
+function int sumaNumerosInt(int a, int b){
+   operation result = a / b!
+   operation contador = a + aux!
+   return result!
+}
+
+#funcion mover motor1
+function moverMotor(){
+   move(motor1,180,ButtonIN)!
+   print(console,'El motor1 se esta moviendo')!
+}
+
+#funcion detener motor1
+function detenerMotor(){
+   restart(motor1,ButtonIN)!
+   print(console, 'El motor 1 se detuvo')!
+}
+
+#funcion escribir un numero en la pantalla LCD
+function escribirLCD(){
+   print(starLCD, 'hola')!
+}
+
+begin{
+   call moverMotor()! # El motor se enciende y se mueve
+   call detenerMotor()! # El motor se deteiene inmediatamente despues
+   call escribirLCD(5)! # El standarLCD escribe en su pantalla el numero 5
+}
+#Al final del begin se debe declarar el bloque de proceso "loop"
+# este se llama automaticamente después del begin y se ejecuta en ciclo hasta
+# que se apague el dispositivo o se ponga la instrucion end
+loop{
+  if(number1 > number2){ # Si numero 1 es mayor a numero 2 se mueve el motor
+    call moverMotor()!
+  }else{ # Si numro 1 es mayor a numero 2 se mueve el motor
+    call detenerMotor()!  
+    number2 = 30.0!
+  }
+  if(number3 and number2){}
+  if(number1 >= number2){}
+  number2 = 20.0!
+  call estado = led1.state()!
+  ligther(led1,ButtonIN)!
+  turn_off(led1,ButtonIN)!
+}

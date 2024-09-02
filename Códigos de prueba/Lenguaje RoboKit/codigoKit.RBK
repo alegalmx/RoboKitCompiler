@@ -1,0 +1,79 @@
+#RoboKIT 18 de Diciembre de 2023
+
+#Definicion de puertos
+
+#Declaracion de puertos para mover servomotor
+port_B0 motor motor1!
+port_B1 motor motor2!
+port_B2	motor motor3!
+
+#Declaración de leds
+port_C2 LED LedAfuera!
+port_C3 LED LedMiniSplit!
+port_C4 LED LedSala!
+
+
+#Declaración de entradas
+port_A0 button INPUT1!
+port_A1 button INPUT2!
+port_A2 button INPUT3!
+port_A3 button INPUT4!
+
+function moverMotorUno(){
+   move(motor1,0,INPUT1)!
+}
+function moverMotorDos(){
+   move(motor2,0,INPUT1)!
+}
+function moverMotorTres(){
+   move(motor3,0,INPUT1)!
+}
+
+function moverMotorUnoC(){
+   move(motor1,180,INPUT1)!
+}
+function moverMotorDosC(){
+   move(motor2,180,INPUT1)!
+}
+function moverMotorTresC(){
+   move(motor3,180,INPUT1)!
+}
+
+begin(){
+call moverMotorUnoC()!
+call moverMotorDosC()!
+call moverMotorTresC()!
+}
+
+loop(){
+delay(5000)!
+     call moverMotorUno()!
+     delay(5000)!
+ #call moverMotorTres()!
+     #delay(5000)!
+     ligther(LedMiniSplit,INPUT1)!
+     delay(5000)!
+     ligther(LedSala,INPUT1)!
+     delay(5000)!
+     #call moverMotorDos()!
+     ligther(LedAfuera,INPUT1)!
+     delay(5000)!
+    #call moverMotorTres()!
+     
+     call moverMotorUnoC()!
+
+     #call moverMotorTresC()!
+	turn_off(LedAfuera, INPUT1)!
+	turn_off(LedSala,INPUT1)!
+	turn_off(LedMiniSplit,INPUT1)!
+    #ligther(LedAfuera,INPUT1)!
+     #delay(3000)!
+     #ligther(LedSala,INPUT1)!
+     #lighter(LedMiniSplit,INPUT1)!
+     if(INPUT1){
+     
+     }
+     if(INPUT2){
+     
+     }
+}
